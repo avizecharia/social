@@ -1,5 +1,10 @@
 import exp from 'express';
+import authController from './controllers/authController';
+import userController from './controllers/userController';
+import postController from './controllers/postController';
 import 'dotenv/config';
 const app = exp();
-console.log(process.env.PORT);
-app.listen(process.env.PORT);
+app.use('/auth', authController);
+app.use('/user', userController);
+app.use('/post', postController);
+app.listen(process.env.PORT, () => console.log(`see you at http::localhost:${process.env.PORT}`));
