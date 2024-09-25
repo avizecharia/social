@@ -9,6 +9,7 @@ const userController_1 = __importDefault(require("./controllers/userController")
 const postController_1 = __importDefault(require("./controllers/postController"));
 require("dotenv/config");
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.use('/auth', authController_1.default);
 app.use('/user', userController_1.default);
 app.use('/post', postController_1.default);

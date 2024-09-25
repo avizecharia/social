@@ -13,87 +13,102 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const postService_1 = __importDefault(require("../services/postService"));
 const router = express_1.default.Router();
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//get all posts
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const posts = yield postService_1.default.getAllPosts();
+        console.log(posts);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined
+            data: posts,
         });
     }
     catch (err) {
         res.status(400).json({
             err: true,
             message: "I was too lazy to change the default message",
-            data: null
+            data: null,
         });
     }
 }));
 // protected route
-router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//create new post
+router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.json({
-            err: false,
-            message: "I was too lazy to change the default message",
-            data: undefined
-        });
+        const result = yield postService_1.default.createNewPost(req.body);
+        if (result) {
+            res.json({
+                err: false,
+                message: "I was too lazy to change the default message",
+                data: undefined,
+            });
+        }
+        else {
+            throw new Error("Cant Save New User to the file");
+        }
     }
     catch (err) {
         res.status(400).json({
             err: true,
             message: "I was too lazy to change the default message",
-            data: null
+            data: null,
         });
     }
 }));
 //query params: ?title=x
-router.get('/search', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined
+            data: undefined,
         });
     }
     catch (err) {
         res.status(400).json({
             err: true,
             message: "I was too lazy to change the default message",
-            data: null
+            data: null,
         });
     }
 }));
-router.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//get post by id
+router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield postService_1.default.getPostById(req.params.id);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined
+            data: result,
         });
     }
     catch (err) {
         res.status(400).json({
             err: true,
             message: "I was too lazy to change the default message",
-            data: null
+            data: null,
         });
     }
 }));
 // protected route
-router.patch('/like/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//
+router.patch("/like/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield postService_1.default.addLikeToPost(req.params.id);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined
+            data: result,
         });
     }
     catch (err) {
         res.status(400).json({
             err: true,
             message: "I was too lazy to change the default message",
-            data: null
+            data: null,
         });
     }
 }));
