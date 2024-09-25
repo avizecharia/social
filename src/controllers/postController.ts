@@ -23,6 +23,8 @@ res.status(400).json({
 })
 }
 })
+// protected route
+
 router.post('/', async (
     req : Request,
     res:Response
@@ -84,6 +86,8 @@ res.status(400).json({
 })
 }
 })
+// protected route
+
 router.patch('/like/:id', async (
     req : Request,
     res:Response

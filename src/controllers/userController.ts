@@ -63,6 +63,8 @@ res.status(400).json({
 })
 }
 })
+// protected route
+
 // query params ? type = MINE || ELSE
 router.get('/profile', async (
     req : Request,
@@ -84,6 +86,8 @@ res.status(400).json({
 })
 }
 })
+// protected route
+
 // query params ? type = MINE || ELSE
 
 router.get('/followers', async (
@@ -106,6 +110,7 @@ res.status(400).json({
 })
 }
 })
+// protected route
 // query params ? type = MINE || ELSE
 
 router.get('/following', async (
