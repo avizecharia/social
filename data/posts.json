@@ -2,10 +2,39 @@
   {
     "authorId": "456a0755-8791-40f1-8c67-a6c95d7b60b6",
     "content": "my first post",
-    "hashtags": ["#first", "#post"],
+    "hashtags": [
+      "#first",
+      "#post"
+    ],
     "ref": "",
-    "likes": [],
+    "likes": [
+      "456a0755-8791-40f1-8c67-a6c95d7b60b6"
+    ],
     "id": "3aaac382-99be-430b-9c1a-e63a58fee9f7",
     "createdAt": "2024-09-25T12:14:46.322Z"
+  },
+  {
+    "authorId": "456a0755-8791-40f1-8c67-a6c95d7b60b6",
+    "content": "slslslslsl",
+    "hashtags": [
+      "#333"
+    ],
+    "ref": "",
+    "likes": [],
+    "id": "214c990d-f2bd-4b6b-b636-0b5257255e0a",
+    "createdAt": "2024-09-25T13:39:23.412Z"
+  },
+  {
+    "authorId": "456a0755-8791-40f1-8c67-a6c95d7b60b6",
+    "content": "pllplpplpl",
+    "hashtags": [
+      "#333"
+    ],
+    "ref": "",
+    "likes": [
+      "b449a1f3-de96-467f-a3ba-34d09e9a65d9"
+    ],
+    "id": "ef1a3a67-17e1-43bc-80ea-dae92e9f2619",
+    "createdAt": "2024-09-25T13:39:39.961Z"
   }
 ]

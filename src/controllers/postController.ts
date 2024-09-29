@@ -48,10 +48,12 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
 //query params: ?title=x
 router.get("/search", async (req: Request, res: Response): Promise<void> => {
   try {
+    const result = await PostService.getSearchPost(req.query.content as string)
+
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result,
     });
   } catch (err) {
     res.status(400).json({
@@ -83,10 +85,14 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
 // protected route
 //
 router.patch(
-  "/like/:id",
+  "/like",
+
   async (req: Request, res: Response): Promise<void> => {
     try {
-    const result = await PostService.addLikeToPost(req.params.id)
+      const result = await PostService.addLikeToPost(
+        req.body.postId,
+        req.body.userId
+      );
       res.json({
         err: false,
         message: "I was too lazy to change the default message",

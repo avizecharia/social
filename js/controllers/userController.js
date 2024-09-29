@@ -39,10 +39,11 @@ router.post("/register", (req, res) => __awaiter(void 0, void 0, void 0, functio
 }));
 router.post("/follow", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield userService_1.default.follow(req.body.acoountUserId, req.body.folloeUerId);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result,
         });
     }
     catch (err) {
@@ -56,10 +57,11 @@ router.post("/follow", (req, res) => __awaiter(void 0, void 0, void 0, function*
 // query params : ? x=y
 router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield userService_1.default.getSearchUser(req.query.userName);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result,
         });
     }
     catch (err) {
@@ -74,10 +76,11 @@ router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* 
 // query params ? type = MINE || ELSE
 router.get("/profile", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield userService_1.default.getUserById(req.query.id);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result,
         });
     }
     catch (err) {
@@ -92,10 +95,11 @@ router.get("/profile", (req, res) => __awaiter(void 0, void 0, void 0, function*
 // query params ? type = MINE || ELSE
 router.get("/followers", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield userService_1.default.getUserById(req.query.id);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result === null || result === void 0 ? void 0 : result.followeres,
         });
     }
     catch (err) {
@@ -110,10 +114,11 @@ router.get("/followers", (req, res) => __awaiter(void 0, void 0, void 0, functio
 // query params ? type = MINE || ELSE
 router.get("/following", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield userService_1.default.getUserById(req.query.id);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result === null || result === void 0 ? void 0 : result.following,
         });
     }
     catch (err) {

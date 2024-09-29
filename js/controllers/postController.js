@@ -61,10 +61,11 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 //query params: ?title=x
 router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const result = yield postService_1.default.getSearchPost(req.query.content);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",
-            data: undefined,
+            data: result,
         });
     }
     catch (err) {
@@ -95,9 +96,9 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 }));
 // protected route
 //
-router.patch("/like/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.patch("/like", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield postService_1.default.addLikeToPost(req.params.id);
+        const result = yield postService_1.default.addLikeToPost(req.body.postId, req.body.userId);
         res.json({
             err: false,
             message: "I was too lazy to change the default message",

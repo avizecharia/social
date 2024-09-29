@@ -1,40 +1,42 @@
 import exp, { Router, Response, Request } from "express";
 import UserService from "../services/userService";
 import NewUserDto from "../Dto/newUserDto";
+import User from "../models/user";
 
 const router: Router = exp.Router();
 
-router.post("/register", async (req: Request<any,any,NewUserDto>, res: Response): Promise<void> => {
-  try {
-    
-    
-    const result = await UserService.createNewUser(req.body);
-    if (result){
+router.post(
+  "/register",
+  async (req: Request<any, any, NewUserDto>, res: Response): Promise<void> => {
+    try {
+      const result = await UserService.createNewUser(req.body);
+      if (result) {
         res.json({
-            err: false,
-            message: "I was too lazy to change the default message",
-            data: undefined,
-          });
-    }else{
+          err: false,
+          message: "I was too lazy to change the default message",
+          data: undefined,
+        });
+      } else {
         throw new Error("Cant Save New User to the file");
-        
-    }
-    
-  } catch (err) {
-    res.status(400).json({
-      err: true,
-      message: err || "I was too lazy to change the default message",
+      }
+    } catch (err) {
+      res.status(400).json({
+        err: true,
+        message: err || "I was too lazy to change the default message",
 
-      data: null,
-    });
+        data: null,
+      });
+    }
   }
-});
+);
 router.post("/follow", async (req: Request, res: Response): Promise<void> => {
   try {
+const result = await UserService.follow( req.body.acoountUserId,req.body.folloeUerId)
+
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result,
     });
   } catch (err) {
     res.status(400).json({
@@ -48,10 +50,11 @@ router.post("/follow", async (req: Request, res: Response): Promise<void> => {
 // query params : ? x=y
 router.get("/search", async (req: Request, res: Response): Promise<void> => {
   try {
+    const result = await UserService.getSearchUser(req.query.userName as string)
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result,
     });
   } catch (err) {
     res.status(400).json({
@@ -67,10 +70,12 @@ router.get("/search", async (req: Request, res: Response): Promise<void> => {
 // query params ? type = MINE || ELSE
 router.get("/profile", async (req: Request, res: Response): Promise<void> => {
   try {
+    const result = await UserService.getUserById(req.query.id as string)
+    
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result,
     });
   } catch (err) {
     res.status(400).json({
@@ -87,10 +92,11 @@ router.get("/profile", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/followers", async (req: Request, res: Response): Promise<void> => {
   try {
+    const result :User | undefined = await UserService.getUserById(req.query.id as string)
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result?.followeres,
     });
   } catch (err) {
     res.status(400).json({
@@ -106,10 +112,11 @@ router.get("/followers", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/following", async (req: Request, res: Response): Promise<void> => {
   try {
+    const result : User |undefined = await UserService.getUserById(req.query.id as string)
     res.json({
       err: false,
       message: "I was too lazy to change the default message",
-      data: undefined,
+      data: result?.following,
     });
   } catch (err) {
     res.status(400).json({

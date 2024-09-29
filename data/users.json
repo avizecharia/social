@@ -5,7 +5,9 @@
     "email": "avi@gmail.com",
     "birthday": "1975-08-19T23:15:30.000z",
     "avatarUrl": "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=1024x1024&w=is&k=20&c=6XEZlH2FjqdpXUqjUK4y0LlWF6yViZVWn9HZJ-IR8gU=",
-    "followeres": [],
+    "followeres": [
+      "b449a1f3-de96-467f-a3ba-34d09e9a65d9"
+    ],
     "following": [],
     "isLookedAccount": false,
     "id": "456a0755-8791-40f1-8c67-a6c95d7b60b6"
@@ -17,7 +19,9 @@
     "birthday": "1975-08-19T23:15:30.000z",
     "avatarUrl": "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=1024x1024&w=is&k=20&c=6XEZlH2FjqdpXUqjUK4y0LlWF6yViZVWn9HZJ-IR8gU=",
     "followeres": [],
-    "following": [],
+    "following": [
+      "456a0755-8791-40f1-8c67-a6c95d7b60b6"
+    ],
     "isLookedAccount": false,
     "id": "b449a1f3-de96-467f-a3ba-34d09e9a65d9"
   }
